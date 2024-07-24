@@ -1,75 +1,16 @@
-// let data = {
-//   "coord": {
-//     "lon": 116.3972,
-//     "lat": 39.9075
-//   },
-//   "weather": [
-//     {
-//       "id": 803,
-//       "main": "Clouds",
-//       "description": "曇りがち",
-//       "icon": "04d"
-//     }
-//   ],
-//   "base": "stations",
-//   "main": {
-//     "temp": 9.94,
-//     "feels_like": 8.65,
-//     "temp_min": 9.94,
-//     "temp_max": 9.94,
-//     "pressure": 1022,
-//     "humidity": 14,
-//     "sea_level": 1022,
-//     "grnd_level": 1016
-//   },
-//   "visibility": 10000,
-//   "wind": {
-//     "speed": 2.65,
-//     "deg": 197,
-//     "gust": 4.84
-//   },
-//   "clouds": {
-//     "all": 53
-//   },
-//   "dt": 1646542386,
-//   "sys": {
-//     "type": 1,
-//     "id": 9609,
-//     "country": "CN",
-//     "sunrise": 1646520066,
-//     "sunset": 1646561447
-//   },
-//   "timezone": 28800,
-//   "id": 1816670,
-//   "name": "北京市",
-//   "cod": 200
-// };
-
-// ////////// 課題3-2 ここからプログラムを書こう
-// console.log("緯度: "+data.coord.lon+" 経度: "+data.coord.lat);
-// console.log(data.weather[0].description);
-// console.log("最低気温: "+data.main.temp_min);
-// console.log("最高気温: "+data.main.temp_max);
-// console.log("湿度: "+data.main.humidity);
-// console.log("風速: "+data.wind.speed);
-// console.log("風向き: "+data.wind.deg);
-// console.log("都市名: "+data.name);
-
-// // 課題4-2
-// let w = document.querySelector('div#result');
-// let li = document.createElement("li");
-// li.textContent ="世界の天気(検索結果1件) "+"緯度: "+data.coord.lon+" 経度: "+data.coord.lat
-// +" 天気: "+data.weather[0].description
-// +" 最低気温: "+data.main.temp_min+" 最高気温: "+data.main.temp_max
-// +" 湿度: "+data.main.humidity+" 風速: "+data.wind.speed
-// +" 風向き: "+data.wind.deg+" 都市名: "+data.name;
-// w.insertAdjacentElement('beforeend', li);
-
 let w = document.querySelector('div#result');
 let li = document.createElement("li");
 
+div = document.querySelector('div#phototable');
+
+let p1 = document.createElement('p');
+let img = document.createElement('img');
+img.setAttribute('src','earth.png');
+p1.insertAdjacentElement('beforeend', img);
+div.insertAdjacentElement('beforeend', p1);
+
 function print(data){
-li.remove();
+li.remove(); //　前回の検索結果を削除
 li.textContent ="世界の天気(検索結果1件) "+"緯度: "+data.coord.lon+" 経度: "+data.coord.lat
 +" 天気: "+data.weather[0].description
 +" 最低気温: "+data.main.temp_min+" 最高気温: "+data.main.temp_max
@@ -89,6 +30,7 @@ function showSelectResult() {
     let o = os.item(idx);       // os の idx 番目の要素
     if(idx ===0){
       console.log("国名をえらんでください");
+      li.remove();
     }
     else{
     console.log('選択された ' + idx + ' 番目の option の情報:');
